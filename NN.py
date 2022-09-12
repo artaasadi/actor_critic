@@ -5,7 +5,7 @@ import torch as T
 import torch.nn.functional as F
 import torch.nn as nn
 import torch.optim as optim
-from torch.distribution.normal import Normal
+from torch.distributions.normal import Normal
 
 class CriticNetwork(nn.Module):
     def __init__(self, beta, n_actions, input_dims, name='critic', fc1_dims= 256, fc2_dims= 256, chkp_dir='model'):
@@ -41,7 +41,7 @@ class CriticNetwork(nn.Module):
         self.load_state_dict(T.load(self.checkpoint_file))
 
 
-class ValueNetwork(nn.Model):
+class ValueNetwork(nn.Module):
     def __init__(self, beta, input_dims, name='value', fc1_dims= 256, fc2_dims= 256, chkp_dir='model'):
         super(ValueNetwork, self).__init__()
         self.input_dims = input_dims
@@ -74,7 +74,7 @@ class ValueNetwork(nn.Model):
     def load_checkpoint(self):
         self.load_state_dict(T.load(self.checkpoint_file))
 
-class ActorNetwork(nn.Model):
+class ActorNetwork(nn.Module):
     def __init__(self, beta, input_dims, max_actions, fc1_dims= 256, fc2_dims= 256, n_actions= 2, name= 'actor', chkp_dir='model'):
         super(ActorNetwork, self).__init__()
         self.input_dims = input_dims
