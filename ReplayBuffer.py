@@ -28,7 +28,7 @@ class ReplayBuffer():
         reward = self.mem_reward[batch]
         done = self.mem_terminal[batch]
 
-        state, action, reward, state_, done
+        return state, action, reward, state_, done
 
 
     def print_mem(self):
